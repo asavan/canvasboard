@@ -105,8 +105,8 @@ function prepareSimpleCanvas()
 		clickX_simple = new Array();
 		clickY_simple = new Array();
 		clickDrag_simple = new Array();
-		// clearCanvas_simple(); 
-		clearCanvas();
+		clearCanvas_simple(); 
+		// clearCanvas();
 	});
 	
 	// Add touch event listeners to canvas element
