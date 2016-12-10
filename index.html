@@ -1,32 +1,43 @@
 <html>
 <head>
-	<style>
+    <style>
 
 
+        /* to show the canvas bounds */
+        canvas {
+            background: #eee;
+        }
 
-/* to show the canvas bounds */
-canvas {
-    background: #eee;
-}
+        html, body {
+            height: 100%;
+            overflow: hidden;
+        }
 
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
-
-#canvasSimpleDiv {width:100%; height:100%;}
+        #canvasSimpleDiv {
+            width: 100%;
+            height: 100%;
+        }
 
 
-	</style>
+    </style>
 </head>
 <body>
-<p class="demoToolList">Clear the canvas: <button id="clearCanvasSimple" type="button">Clear</button></p>
+<p class="demoToolList">Clear the canvas:
+    <button id="clearCanvasSimple" type="button">Clear</button>
+</p>
 <div class="image">
-						<div id="canvasSimpleDiv">
-							
-						</div>
-                    </div>
-					<<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-					<script src="main.js" async="true"> </script>
-					<body>
-					</html>
+    <div id="canvasSimpleDiv">
+
+    </div>
+</div>
+
+<div class="audio">
+    <audio id="player" src="audio/alg.mp3"></audio>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="main.js" async="true"></script>
+<script src="slider.js" async="true"></script>
+<!--<script src='https://code.responsivevoice.org/responsivevoice.js'></script>-->
+</body>
+</html>
