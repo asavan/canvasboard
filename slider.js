@@ -7,6 +7,9 @@ var _algebraic = function () {
     a.style['bottom'] = '-1000px';
     document.body.appendChild(a);
 
+    var audio = document.createElement('audio');
+    audio.src = 'audio/alg.mp3';
+
 
     setTimeout(function () {
         // a.style['right']=10;a.style['bottom']=-1000;
@@ -21,15 +24,11 @@ var _algebraic = function () {
                 t = t + 0.01;
                 el.style[prop] = from + (to - from) * easing(t) + 'px';
                 if (t >= 0.5) {
-                    console.log("Begin");
                     // responsiveVoice.speak("Algebraichno");
-                    // $('audio').play();
-                    console.log("end");
                     clearInterval(iid);
-
                 }
-                if (t >= 0.2 && needSound) {
-                    document.getElementById('player').play();
+                if (t >= 0.1 && needSound) {
+                    audio.play();
                     needSound = false;
                 }
 
@@ -39,7 +38,7 @@ var _algebraic = function () {
         animate(a, 'bottom', pos0, pos0 + height, agentEasing);
 
 
-    }, 50);
+    }, 500);
 };
 
 if (window.addEventListener) {
@@ -49,4 +48,3 @@ if (window.addEventListener) {
 } else {
     _algebraic();
 }
-;
