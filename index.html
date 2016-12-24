@@ -34,6 +34,18 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="main.js" async="true"></script>
 <script src="slider.js" async="true"></script>
+<script>
+function algebraic(baseUrl) {
+	_algebraic(baseUrl);
+}
+if (window.addEventListener) {
+    window.addEventListener('load', algebraic, false);
+} else if (window.attachEvent) {
+    document.attacheEvent('onload', algebraic, false);
+} else {
+    algebraic();
+}
+</script>
 <!--<script src='https://code.responsivevoice.org/responsivevoice.js'></script>-->
 </body>
 </html>

@@ -1,14 +1,19 @@
-var _algebraic = function () {
+var _algebraic = function (baseUrl) {
 
+
+	var beginUrl = '';
+	if (baseUrl && typeof baseUrl === 'string' && baseUrl.indexOf('http') >= 0) {
+		beginUrl = baseUrl;
+	}
     var a = document.createElement('img');
-    a.src = 'img/algebraichno.jpg';
+    a.src = beginUrl + 'img/algebraichno.jpg';
     a.style['position'] = 'fixed';
     a.style['right'] = '10px';
     a.style['bottom'] = '-1000px';
     document.body.appendChild(a);
 
     var audio = document.createElement('audio');
-    audio.src = 'audio/alg.mp3';
+    audio.src = beginUrl + 'audio/alg.mp3';
 
 
     setTimeout(function () {
@@ -41,10 +46,4 @@ var _algebraic = function () {
     }, 500);
 };
 
-if (window.addEventListener) {
-    window.addEventListener('load', _algebraic, false);
-} else if (window.attachEvent) {
-    document.attacheEvent('onload', _algebraic, false);
-} else {
-    _algebraic();
-}
+// _algebraic('https://asavan.github.io/canvasboard/');
