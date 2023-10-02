@@ -57,7 +57,7 @@ sizeHotspotWidthObject.small = 16;
 function prepareSimpleCanvas()
 {
 	// Create the canvas (Neccessary for IE because it doesn't know what a canvas element is)
-	var canvasDiv = document.getElementById('canvasSimpleDiv');
+	var canvasDiv = document.getElementById('canvas-simple-div');
 	canvas_simple = document.createElement('canvas');
 	console.log(canvasDiv);
 	canvasWidth = $(canvasDiv).width();
@@ -180,14 +180,8 @@ function redrawSimple()
 // limitations under the License.
 
 
-function executeArticleScript() {
-	//console.log("executeArticleScript");
-//	prepareCanvas();
+export default function executeArticleScript() {
 	prepareSimpleCanvas();
-//	prepareSimpleColorsCanvas();
-//	prepareSimpleSizesCanvas();
-//	prepareSimpleToolsCanvas();
-//	prepareSimpleOutlineCanvas();
 }
 
 function clearCanvas() {
@@ -197,4 +191,4 @@ function clearCanvas() {
 var totalLoadResources = 8
 var curLoadResNum = 0;
 
-executeArticleScript();
+// executeArticleScript();

@@ -1,6 +1,4 @@
-var _algebraic = function (baseUrl) {
-
-
+export default function _algebraic (baseUrl) {
 	var beginUrl = '';
 	if (baseUrl && typeof baseUrl === 'string' && baseUrl.indexOf('http') >= 0) {
 		beginUrl = baseUrl;
@@ -33,7 +31,7 @@ var _algebraic = function (baseUrl) {
                     clearInterval(iid);
                 }
                 if (t >= 0.1 && needSound) {
-                    audio.play();
+                    // audio.play();
                     needSound = false;
                 }
 
