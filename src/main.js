@@ -36,50 +36,50 @@ export default function prepareSimpleCanvas(callback) {
     };
 	
     canvas_simple.onmousemove = (e) => {
-        if(paint_simple) {
+        if (paint_simple) {
             addClickSimple(e.pageX - canvas_simple.offsetLeft, e.pageY - canvas_simple.offsetTop, true);
             redrawSimple();
         }
     };
 	
-    canvas_simple.onmouseup = function() {
+    canvas_simple.onmouseup = () => {
         paint_simple = false;
         redrawSimple();
     };
 	
-    canvas_simple.onmouseleave = function() {
+    canvas_simple.onmouseleave = () => {
         paint_simple = false;
     };
 	
-    document.querySelector("#clearCanvasSimple").onclick = function(e) {
+    document.querySelector("#clearCanvasSimple").onclick = (e) => {
         e.preventDefault();
         clickX_simple = new Array();
         clickY_simple = new Array();
         clickDrag_simple = new Array();
-        clearCanvas_simple();
+        clearCanvas_simple(context_simple);
         if (typeof callback === "function") {
             callback();
         }
     };
 	
     // Add touch event listeners to canvas element
-    canvas_simple.addEventListener("touchstart", function(e) {
+    canvas_simple.addEventListener("touchstart", (e) => {
         // Mouse down location
-        console.log("changedTouches", e.changedTouches);
-        const mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft,
-            mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - this.offsetTop;
+        const mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - canvas_simple.offsetLeft;
+        const mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - canvas_simple.offsetTop;
 		
         paint_simple = true;
         addClickSimple(mouseX, mouseY, false);
         redrawSimple();
     }, false);
-    canvas_simple.addEventListener("touchmove", function(e) {
+
+    canvas_simple.addEventListener("touchmove", (e) => {
         e.preventDefault();
 
-        const mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - this.offsetLeft,
-            mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - this.offsetTop;
+        const mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - canvas_simple.offsetLeft;
+        const mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - canvas_simple.offsetTop;
 
-        if(paint_simple) {
+        if (paint_simple) {
             addClickSimple(mouseX, mouseY, true);
             redrawSimple();
         }
@@ -99,24 +99,24 @@ function addClickSimple(x, y, dragging) {
     clickDrag_simple.push(dragging);
 }
 
-function clearCanvas_simple() {
-    context_simple.clearRect(0, 0, canvasWidth, canvasHeight);
+function clearCanvas_simple(context) {
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
 }
 
 function redrawSimple() {
-    clearCanvas_simple();
+    clearCanvas_simple(context_simple);
 	
     const radius = 5;
     context_simple.strokeStyle = "#df4b26";
     context_simple.lineJoin = "round";
     context_simple.lineWidth = radius;
 			
-    for(let i=0; i < clickX_simple.length; i++) {		
+    for (let i=0; i < clickX_simple.length; i++) {		
         context_simple.beginPath();
-        if(clickDrag_simple[i] && i) {
+        if (clickDrag_simple[i] && i) {
             context_simple.moveTo(clickX_simple[i-1], clickY_simple[i-1]);
-        }else{
-            context_simple.moveTo(clickX_simple[i]-1, clickY_simple[i]);
+        } else {
+            context_simple.moveTo(clickX_simple[i] - 1, clickY_simple[i]);
         }
         context_simple.lineTo(clickX_simple[i], clickY_simple[i]);
         context_simple.closePath();

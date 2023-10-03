@@ -21,6 +21,7 @@ export default [
             "prefer-arrow-callback": ["error"],
             "curly": ["error"],
             "prefer-const": ["error"],
+            "keyword-spacing": ["error"],
             "brace-style": ["error", "1tbs"],
             "arrow-body-style": ["error"],
             "space-before-blocks": ["error", "always"],
