@@ -57,24 +57,21 @@ sizeHotspotWidthObject.small = 16;
 function prepareSimpleCanvas()
 {
 	// Create the canvas (Neccessary for IE because it doesn't know what a canvas element is)
-	var canvasDiv = document.getElementById('canvas-simple-div');
+	const canvasDiv = document.getElementById('canvas-simple-div');
 	canvas_simple = document.createElement('canvas');
-	console.log(canvasDiv);
-	canvasWidth = $(canvasDiv).width();
-	canvasHeight = $(canvasDiv).height();
-	canvas_simple.setAttribute('width', canvasWidth);
-	canvas_simple.setAttribute('height', canvasHeight);
+	const rect = canvasDiv.getBoundingClientRect();
+    canvasWidth = rect.width;
+    canvasHeight = rect.height;
+    canvas_simple.setAttribute('width', canvasWidth);
+    canvas_simple.setAttribute('height', canvasHeight);
 	canvas_simple.setAttribute('id', 'canvasSimple');
 	canvasDiv.appendChild(canvas_simple);
-	if(typeof G_vmlCanvasManager != 'undefined') {
-		canvas_simple = G_vmlCanvasManager.initElement(canvas_simple);
-	}
+	// canvasWidth = canvas_simple.
 	context_simple = canvas_simple.getContext("2d");
-	
+
 	// Add mouse events
 	// ----------------
-	$('#canvasSimple').mousedown(function(e)
-	{
+	canvas_simple.onmousedown = function(e) {
 		// Mouse down location
 		var mouseX = e.pageX - this.offsetLeft;
 		var mouseY = e.pageY - this.offsetTop;
@@ -82,32 +79,31 @@ function prepareSimpleCanvas()
 		paint_simple = true;
 		addClickSimple(mouseX, mouseY, false);
 		redrawSimple();
-	});
+	};
 	
-	$('#canvasSimple').mousemove(function(e){
+	canvas_simple.onmousemove = function(e){
 		if(paint_simple){
 			addClickSimple(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
 			redrawSimple();
 		}
-	});
+	};
 	
-	$('#canvasSimple').mouseup(function(e){
+	canvas_simple.onmouseup = function(e){
 		paint_simple = false;
 	  	redrawSimple();
-	});
+	};
 	
-	$('#canvasSimple').mouseleave(function(e){
+	canvas_simple.onmouseleave = function(e){
 		paint_simple = false;
-	});
+	};
 	
-	$('#clearCanvasSimple').mousedown(function(e)
-	{
+	document.querySelector('#clearCanvasSimple').onmousedown = function(e) {
 		clickX_simple = new Array();
 		clickY_simple = new Array();
 		clickDrag_simple = new Array();
 		clearCanvas_simple(); 
 		// clearCanvas();
-	});
+	};
 	
 	// Add touch event listeners to canvas element
 	canvas_simple.addEventListener("touchstart", function(e)

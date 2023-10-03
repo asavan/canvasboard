@@ -2,6 +2,14 @@
     "name": "Canvasboard",
 	"short_name": "Canvasboard",
     "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "./img/alg.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
     "background_color": "#ffffff",
     "start_url": "./",
     "display": "standalone"
