@@ -22,6 +22,7 @@ export default [
             "curly": ["error"],
             "prefer-const": ["error"],
             "brace-style": ["error", "1tbs"],
+            "arrow-body-style": ["error"],
             "space-before-blocks": ["error", "always"],
             "no-multi-spaces": ["error"]
         }

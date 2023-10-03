@@ -1,5 +1,4 @@
 export default function _algebraic () {
-    let beginUrl = "";
     let a = document.querySelector(".mem");
     let audio = document.querySelector("audio");
     if (!a) {
@@ -15,5 +14,5 @@ export default function _algebraic () {
             a.classList.remove("down");
         });
     }
-    setTimeout(() => {audio.play();}, 1000);
+    setTimeout(() => audio.play(), 1000);
 }
