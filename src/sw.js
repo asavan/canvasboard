@@ -3,29 +3,29 @@
 const version = "1.0.0";
 const CACHE = "cache-only-" + version;
 
-self.addEventListener("install", function (evt) {
-    evt.waitUntil(precache().then(function () {
+self.addEventListener("install", (evt) => {
+    evt.waitUntil(precache().then(() => {
         return self.skipWaiting();
     }));
 });
 
-self.addEventListener("activate", function (evt) {
+self.addEventListener("activate", (evt) => {
     evt.waitUntil(
-        caches.keys().then(function (cacheNames) {
+        caches.keys().then((cacheNames) => {
             return Promise.all(
-                cacheNames.map(function (cacheName) {
+                cacheNames.map((cacheName) => {
                     if (cacheName !== CACHE) {
                         return caches.delete(cacheName);
                     }
                 })
             );
-        }).then(function () {
+        }).then(() => {
             return self.clients.claim();
         })
     );
 });
 
-self.addEventListener("fetch", function (evt) {
+self.addEventListener("fetch", (evt) => {
     evt.respondWith(networkOrCache(evt.request));
     //     .catch(function () {
     //     return useFallback();
@@ -34,10 +34,10 @@ self.addEventListener("fetch", function (evt) {
 
 
 function networkOrCache(request) {
-    return fetch(request).then(function (response) {
+    return fetch(request).then((response) => {
         return response.ok ? response : fromCache(request);
     })
-        .catch(function () {
+        .catch(() => {
             return fromCache(request);
         });
 }
@@ -49,8 +49,8 @@ function networkOrCache(request) {
 //}
 
 function fromCache(request) {
-    return caches.open(CACHE).then(function (cache) {
-        return cache.match(request, {ignoreSearch: true}).then(function (matching) {
+    return caches.open(CACHE).then((cache) => {
+        return cache.match(request, {ignoreSearch: true}).then((matching) => {
             return matching || Promise.reject("request-not-in-cache");
         });
     });
@@ -58,7 +58,7 @@ function fromCache(request) {
 
 function precache() {
     const filesToCache = self.__WB_MANIFEST.map((e) => e.url);
-    return caches.open(CACHE).then(function (cache) {
+    return caches.open(CACHE).then((cache) => {
         return cache.addAll([
             "./",
             ...filesToCache

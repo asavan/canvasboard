@@ -3,8 +3,7 @@
 import executeArticleScript from "./main.js";
 import algebraic from "./slider.js";
 
-algebraic();
-executeArticleScript();
+executeArticleScript(algebraic);
 
 // eslint-disable-next-line no-undef
 if (__USE_SERVICE_WORKERS__) {
