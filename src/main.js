@@ -29,28 +29,28 @@ export default function prepareSimpleCanvas(callback) {
         // Mouse down location
         const mouseX = e.pageX - canvas_simple.offsetLeft;
         const mouseY = e.pageY - canvas_simple.offsetTop;
-		
+
         paint_simple = true;
         addClickSimple(mouseX, mouseY, false);
         redrawSimple();
     };
-	
+
     canvas_simple.onmousemove = (e) => {
         if (paint_simple) {
             addClickSimple(e.pageX - canvas_simple.offsetLeft, e.pageY - canvas_simple.offsetTop, true);
             redrawSimple();
         }
     };
-	
+
     canvas_simple.onmouseup = () => {
         paint_simple = false;
         redrawSimple();
     };
-	
+
     canvas_simple.onmouseleave = () => {
         paint_simple = false;
     };
-	
+
     document.querySelector("#clearCanvasSimple").onclick = (e) => {
         e.preventDefault();
         clickX_simple = new Array();
@@ -61,13 +61,13 @@ export default function prepareSimpleCanvas(callback) {
             callback();
         }
     };
-	
+
     // Add touch event listeners to canvas element
     canvas_simple.addEventListener("touchstart", (e) => {
         // Mouse down location
         const mouseX = (e.changedTouches ? e.changedTouches[0].pageX : e.pageX) - canvas_simple.offsetLeft;
         const mouseY = (e.changedTouches ? e.changedTouches[0].pageY : e.pageY) - canvas_simple.offsetTop;
-		
+
         paint_simple = true;
         addClickSimple(mouseX, mouseY, false);
         redrawSimple();
@@ -105,13 +105,13 @@ function clearCanvas_simple(context) {
 
 function redrawSimple() {
     clearCanvas_simple(context_simple);
-	
+
     const radius = 5;
     context_simple.strokeStyle = "#df4b26";
     context_simple.lineJoin = "round";
     context_simple.lineWidth = radius;
-			
-    for (let i=0; i < clickX_simple.length; i++) {		
+
+    for (let i=0; i < clickX_simple.length; i++) {
         context_simple.beginPath();
         if (clickDrag_simple[i] && i) {
             context_simple.moveTo(clickX_simple[i-1], clickY_simple[i-1]);
