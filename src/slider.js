@@ -3,7 +3,7 @@ export default function _algebraic () {
     let audio = document.querySelector("audio");
     if (!a) {
         a = document.createElement("img");
-        a.src = "./img/algebraichno.jpg";
+        a.src = "./images/algebraichno.jpg";
         a.classList.add("mem", "down");
         document.body.appendChild(a);
         audio = document.createElement("audio");

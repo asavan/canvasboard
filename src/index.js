@@ -1,5 +1,3 @@
-"use strict";
-
 import executeArticleScript from "./main.js";
 import algebraic from "./slider.js";
 

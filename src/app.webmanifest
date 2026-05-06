@@ -4,7 +4,7 @@
     "theme_color": "#ffffff",
     "icons": [
         {
-            "src": "./img/alg.svg",
+            "src": "./images/alg.svg",
             "sizes": "any",
             "type": "image/svg+xml",
             "purpose": "any maskable"
