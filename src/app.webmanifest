@@ -7,7 +7,7 @@
             "src": "./images/alg.svg",
             "sizes": "any",
             "type": "image/svg+xml",
-            "purpose": "any maskable"
+            "purpose": "any"
         }
     ],
     "background_color": "#ffffff",
