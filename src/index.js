@@ -1,5 +1,5 @@
-import executeArticleScript from "./main.js";
-import algebraic from "./slider.js";
+import executeArticleScript from "./js/main.js";
+import algebraic from "./js/slider.js";
 
 executeArticleScript(algebraic);
 
